@@ -3,8 +3,11 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
-Assets/AssetStoreTools*
-Assets/Asset Packs/
+AssetStoreTools*
+Asset Packs/
+Audio/
+Oculus/
+SampleScenes/
 
 # Visual Studio cache directory
 .vs/
