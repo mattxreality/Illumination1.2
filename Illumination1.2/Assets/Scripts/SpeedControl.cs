@@ -21,7 +21,7 @@ public class SpeedControl : MonoBehaviour
     [SerializeField] float speedMultiplier = 1f;
     float speedFactor;
     public int countOfGatesActivated = 0;
-    public float currentSpeed;
+    private float calculatedSpeed;
 
     [SerializeField] float coolDownValue = 10f; // how long after gate contact before speed decreases
     private float currCoolDownValue; // used for countdown and resetting lights & collision
@@ -52,6 +52,7 @@ public class SpeedControl : MonoBehaviour
     {
         if (other.tag == "accelerator")
         {
+            // todo gate is counted twice, or there are two collider interactions
             countOfGatesActivated++;
             print("collided with accelerator gate");
             print("Count of gates activated = " + countOfGatesActivated);
@@ -66,9 +67,12 @@ public class SpeedControl : MonoBehaviour
     private void SetSpeed()
     {
         if (countOfGatesActivated < 1)
-            currentSpeed = initialSpeed;
+            calculatedSpeed = initialSpeed;
         else
-            currentSpeed = countOfGatesActivated * speedMultiplier;
+            calculatedSpeed = countOfGatesActivated * speedMultiplier;
+        // changes speed of BetterWaypointFollower
+        // todo, speed reduction currently not working. 
+        BetterWaypointFollower.instance.routeSpeed = calculatedSpeed; 
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 //This is an automated script for enemy fired projectiles at regular intervals
 
-public class ProjectileControl : MonoBehaviour
+public class ExampleEnemyFiredProjectileControl : MonoBehaviour
 {
     public GameObject projectile;
     public Transform projectileSpawn;

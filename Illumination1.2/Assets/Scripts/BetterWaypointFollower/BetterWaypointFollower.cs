@@ -22,6 +22,7 @@ public class BetterWaypointFollower : MonoBehaviour {
     public WaypointCircuit circuit;
     public float routeSpeed = 50f;
     public float lookAheadDistance = 100f;
+    public static BetterWaypointFollower instance; // allows access to this script from other scripts
 
     #region Varying Speed Variables
     public bool varyingSpeed = false;
@@ -40,8 +41,21 @@ public class BetterWaypointFollower : MonoBehaviour {
 
     private float[] distances;
     private float progressDistance;
-    private float currentSpeed;
+    public float currentSpeed;
     private int lastWaypoint;
+
+    void Awake()
+    {
+        // check if this is the only instance. If not, destroy this instance.
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Pull Waypoint data from circuit to set up our varying speed variables.
     public void InitializeSpeeds() {
