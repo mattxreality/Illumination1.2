@@ -12,12 +12,16 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] ParticleSystem deathParticle;
     [SerializeField] ParticleSystem successParticle;
 
+    [Header("Local Sources")]
+    [SerializeField] ParticleSystem localImpactFX;
+
     AudioSource audioSource;
 
     enum State { Alive, Dying, Transcending };
     State currentState = State.Alive;
     bool collisionsEnabled = true; // for debug code
 
+    [Tooltip("In Seconds")][SerializeField] float levelLoadDelay = 5f;
     private int currentScene;
     private int totalScenes;
     private int nextScene;
@@ -55,9 +59,16 @@ public class CollisionHandler : MonoBehaviour
         currentState = State.Dying;
         audioSource.PlayOneShot(death);
         audioSource.PlayOneShot(impact);
-        Instantiate(deathParticle, transform.position, transform.rotation);
 
-        Invoke("LoadNextLevel", 5f);
+        #region deathParticles
+        // Two ways to do it, Instantiate a prefab particles system
+        //Instantiate(deathParticle, transform.position, transform.rotation);
+
+        // Or enable a child ParticleSystem gameObject
+        localImpactFX.gameObject.SetActive(true);
+        #endregion
+
+        Invoke("LoadNextLevel", levelLoadDelay); // string reference
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -72,7 +83,7 @@ public class CollisionHandler : MonoBehaviour
 
                 case "projectile":
                     // do nothing
-                    deathParticle.Play();
+                    
                     break;
 
                 case "gate":
@@ -92,7 +103,7 @@ public class CollisionHandler : MonoBehaviour
 
                 default:
                     // die
-                    SendMessage("ControlsEnabled", false); // disables controls in MAXRPlayerController
+                    SendMessage("ControlsEnabled", false); // string reference, disables controls in MAXRPlayerController
                     StartDeathSequence();
                     break;
             }

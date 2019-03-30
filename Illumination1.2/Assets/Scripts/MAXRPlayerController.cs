@@ -27,7 +27,7 @@ public class MAXRPlayerController : MonoBehaviour
 
     public bool controlsEnabled = true;
    
-    public void ControlsEnabled(bool b)
+    public void ControlsEnabled(bool b) // called by string reference
     {
         controlsEnabled = b;
         print("controlsEnabled set to: " + controlsEnabled);
