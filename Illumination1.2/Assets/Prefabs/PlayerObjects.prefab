@@ -150,15 +150,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48aa6fd447cf749479462ae634cbcb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xControlSpeed: 6
-  yControlSpeed: 6
-  xControlRange: 3
-  yControlRange: 3
+  xControlSpeed: 12
+  yControlSpeed: 12
+  xControlRange: 26
+  yControlRange: 16
   positionPitchFactor: -5
   positionRollFactor: -5
   controlPitchFactor: -20
   controlRollFactor: -20
   controlYawFactor: 10
+  controlsEnabled: 1
 --- !u!114 &4601986391847894022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c379ee4d8fa0e70428d79803b73caee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impact: {fileID: 0}
+  death: {fileID: 0}
+  success: {fileID: 0}
+  deathParticle: {fileID: 0}
+  successParticle: {fileID: 0}
 --- !u!65 &3837532451508405457
 BoxCollider:
   m_ObjectHideFlags: 0

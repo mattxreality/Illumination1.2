@@ -51,17 +51,18 @@ public class CollisionHandler : MonoBehaviour
     }
 
     void StartDeathSequence() {
-        print("Bad touching. Dry death.");
+        print("Made contact with bad surface.");
         currentState = State.Dying;
         audioSource.PlayOneShot(death);
         audioSource.PlayOneShot(impact);
-        deathParticle.Play();
+        Instantiate(deathParticle, transform.position, transform.rotation);
 
-        Invoke("LoadNextLevel", 2f);
+        Invoke("LoadNextLevel", 5f);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (!collisionsEnabled) { return; } // part of debug logic
 
         if (currentState == State.Alive)
@@ -71,6 +72,7 @@ public class CollisionHandler : MonoBehaviour
 
                 case "projectile":
                     // do nothing
+                    deathParticle.Play();
                     break;
 
                 case "gate":
@@ -90,7 +92,7 @@ public class CollisionHandler : MonoBehaviour
 
                 default:
                     // die
-                    print("You collided with something bad.");
+                    SendMessage("ControlsEnabled", false); // disables controls in MAXRPlayerController
                     StartDeathSequence();
                     break;
             }

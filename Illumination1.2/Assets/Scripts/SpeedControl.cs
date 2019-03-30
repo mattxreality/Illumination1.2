@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/* I wanted this script to cause the speed to change for my player, but I don't
- * know how to change the speed of the waypoint follower from this script. 
+/* This script changes the speed of the BetterWaypointFollower script.  
  * 
- * For future reference, I would like to make this change the speed of my player
- * and don't yet know how to call external scripts or make changes to external scripts
- * yet. ... Sadness.... This was a major game mechanic I wanted to explore.
  * 
  * My other idea is to use free flying, and not use the waypoint follower. I could
  * use this script then, because I would control forward velocity from this script.
+ * 
+ *  to-do
+ *  1) Improve the SpeedFactor()
+ *  2) Slow speed after countdown
+ * 
  */
 
 public class SpeedControl : MonoBehaviour
@@ -57,6 +58,7 @@ public class SpeedControl : MonoBehaviour
             print("collided with accelerator gate");
             print("Count of gates activated = " + countOfGatesActivated);
 
+            // FX when player passes through gate
             Instantiate(playerContact, transform.position, transform.rotation);
 
             countOfGatesActivated++; // increment count of gates activated by 1
@@ -70,18 +72,14 @@ public class SpeedControl : MonoBehaviour
             calculatedSpeed = initialSpeed;
         else
             calculatedSpeed = countOfGatesActivated * speedMultiplier;
+        
+       
         // changes speed of BetterWaypointFollower
         // todo, speed reduction currently not working. 
         BetterWaypointFollower.instance.routeSpeed = calculatedSpeed; 
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "gate")
-        {
 
-        }
-    }
     private IEnumerator StartCountdown(float coolDownValue)
     {
         // counts down based on 'Light Duration" value

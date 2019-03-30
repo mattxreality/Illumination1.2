@@ -24,40 +24,33 @@ public class MAXRPlayerController : MonoBehaviour
     private float xThrow, yThrow; // two variables declared on the same line
 
     private int currentScene;
-       
+
+    public bool controlsEnabled = true;
    
+    public void ControlsEnabled(bool b)
+    {
+        controlsEnabled = b;
+        print("controlsEnabled set to: " + controlsEnabled);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        ProcessTranslation();
-        ProcessRotation();
-        DebugGame();
 
-        float ovrPrimaryThumbstickHorizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-        //print("Horizontal PrimaryThumb = " + ovrPrimaryThumbstickHorizontal);
+        if(!controlsEnabled) { return; }
+        else
+        {
+            ProcessTranslation();
+            ProcessRotation();
+        }
+        
+        if (Debug.isDebugBuild) { DebugGame(); } // debug controls for build settings
 
         //stuff for later
         //Vector2 ovrDirectController = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
         //print("Oculus Vector2 PrimaryThumb = " + ovrDirectController);
-
-
-
     }
-    void DebugGame()
-    {
-        if (Input.GetButton("Fire2"))
-        {
-            // reload first level
 
-            LoadNextLevel();
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            // restart current scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-    }
 
     void LoadNextLevel()
     {
@@ -114,5 +107,20 @@ public class MAXRPlayerController : MonoBehaviour
         float clampedYPos = Mathf.Clamp(rawYPos, -yControlRange, yControlRange);
         // Moves the player object using input above
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
+    }
+
+    void DebugGame()
+    {
+        if (Input.GetButton("Fire2"))
+        {
+            // reload first level
+
+            LoadNextLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            // restart current scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
