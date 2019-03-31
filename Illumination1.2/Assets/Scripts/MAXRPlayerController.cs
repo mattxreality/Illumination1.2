@@ -7,50 +7,104 @@ using UnityEngine.SceneManagement;
 public class MAXRPlayerController : MonoBehaviour
 {
     [Header("General")] // provides a GUI section header
-    [Tooltip("In ms^-1")] [SerializeField] float xControlSpeed = 6f;
-    [Tooltip("In ms^-1")] [SerializeField] float yControlSpeed = 6f;
-    [Tooltip("In M")] [SerializeField] float xControlRange = 3f;
-    [Tooltip("In M")] [SerializeField] float yControlRange = 3f;
+    public bool isControlEnabled = true;
+    [Tooltip("In ms^-1")] [SerializeField] float xControlSpeed = 12f;
+    [Tooltip("In ms^-1")] [SerializeField] float yControlSpeed = 12f;
+    [Tooltip("In M")] [SerializeField] float xControlRange = 26f;
+    [Tooltip("In M")] [SerializeField] float yControlRange = 16f;
 
     [Header("Screen-position Based")]
-    [SerializeField] float positionPitchFactor = -5f;
+    [SerializeField] float positionPitchFactor = -1.43f;
     [SerializeField] float positionRollFactor = -5f;
+    [SerializeField] float positionYawFactor = 2f;
 
     [Header("Control-throw Based")]
     [SerializeField] float controlPitchFactor = -20f;
     [SerializeField] float controlRollFactor = -20f;
-    [SerializeField] float controlYawFactor = 5f;
+    [SerializeField] float controlYawFactor = 10f;
+    
+    [Header("Rotation Return")]
+    [SerializeField] float rotateSpeed = 0.1f;
+    bool restoreRotation = false;
+    Quaternion originalRotation;
 
     private float xThrow, yThrow; // two variables declared on the same line
-
     private int currentScene;
 
-    public bool controlsEnabled = true;
-   
+
     public void ControlsEnabled(bool b) // called by string reference
     {
-        controlsEnabled = b;
-        print("controlsEnabled set to: " + controlsEnabled);
+        isControlEnabled = b;
+        print("controlsEnabled set to: " + isControlEnabled);
     }
 
-    // Update is called once per frame
+    private bool m_isAxisInUse = false;
+
+    private void Start()
+    {
+        // set starting rotation
+        originalRotation = transform.rotation;
+        print("original rotation " + originalRotation);
+    }
     void Update()
     {
+        CheckAxisInUse();
 
-        if(!controlsEnabled) { return; }
+        if (!isControlEnabled) { return; }
         else
         {
             ProcessTranslation();
             ProcessRotation();
         }
-        
+
         if (Debug.isDebugBuild) { DebugGame(); } // debug controls for build settings
 
         //stuff for later
         //Vector2 ovrDirectController = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
         //print("Oculus Vector2 PrimaryThumb = " + ovrDirectController);
+
+        // RestoreRotation(); // not used yet
     }
 
+    private void CheckAxisInUse()
+    {
+        // checks if position controls are in use
+            if (CrossPlatformInputManager.GetAxisRaw("Horizontal") != 0)
+        {
+            if (m_isAxisInUse == false)
+            {
+                // Call your event function here.
+                m_isAxisInUse = true;
+            }
+        }
+        if (CrossPlatformInputManager.GetAxisRaw("Horizontal") == 0)
+        {
+            m_isAxisInUse = false;
+        }
+        print("m_isAxisInUse = " + m_isAxisInUse);
+    }
+
+    private void RestoreRotation()
+    {
+        // todo make return rotation smooth and slow. !!! Possibly I should use throw 'sensitivity' and 'gravity'
+        // for gradual return...? Current return is too fast.
+
+        // Note: The axis Sensitivity and Gravity register numbers all the time.
+        if (!m_isAxisInUse && !restoreRotation)
+        {
+            restoreRotation = true;
+        }
+
+        if (restoreRotation)
+        {
+            // this does strange things to the current playerObject, probably due to waypoint follower
+            transform.rotation = Quaternion.Lerp(transform.rotation, originalRotation, Time.time * rotateSpeed);
+            if (transform.rotation == originalRotation)
+            {
+                restoreRotation = false;
+            }
+        }
+    }
 
     void LoadNextLevel()
     {
@@ -60,35 +114,15 @@ public class MAXRPlayerController : MonoBehaviour
 
     private void ProcessRotation()
     {
-
         float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
         float pitchDueToControlThrow = yThrow * controlPitchFactor;
-        //float pitch = pitchDueToPosition + pitchDueToControlThrow;
-        float pitch = pitchDueToControlThrow;
+        float pitch = pitchDueToPosition + pitchDueToControlThrow;
 
-        float rollDueToPosition = transform.localPosition.x * positionRollFactor;
-        float rollDueToControlThrow = xThrow * controlRollFactor;
-        //float roll = rollDueToPosition + rollDueToControlThrow;
-        float roll = rollDueToControlThrow;
+        float yaw = transform.localPosition.x * positionYawFactor;
 
-        float yaw = transform.localPosition.x * xThrow;
+        float roll = xThrow * controlRollFactor;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
-
-        // todo make return rotation smooth and slow. Current return is too fast.
-        // the if statement doesn't work, but has components that might jog my memory.
-        // The axis Sensitivity and Gravity register numbers all the time, which is why
-        // the below if doesn't work.
-        if (CrossPlatformInputManager.GetAxis("Horizontal") >= Mathf.Epsilon |
-            CrossPlatformInputManager.GetAxis("Horizontal") <= Mathf.Epsilon) //if input
-        {
-            //move
-        }
-        else
-        {
-            //run function to return to a smooth Quaternion.Euler(0,0,0)
-        }
-
     }
 
     private void ProcessTranslation()
