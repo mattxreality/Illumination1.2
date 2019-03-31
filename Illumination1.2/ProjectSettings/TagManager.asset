@@ -8,6 +8,7 @@ TagManager:
   - light
   - gate
   - accelerator
+  - FX
   layers:
   - Default
   - TransparentFX

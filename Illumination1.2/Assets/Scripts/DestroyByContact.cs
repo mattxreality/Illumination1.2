@@ -10,7 +10,7 @@ public class DestroyByContact : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "light" | other.tag == "gate" | other.tag == "accelerator") { return; }
+        if (other.tag == "FX" | other.tag == "light" | other.tag == "gate" | other.tag == "accelerator") { return; }
 
         if (explosion != null)
         {
