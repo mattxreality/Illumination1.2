@@ -7,7 +7,6 @@ public class Mover : MonoBehaviour
     public float speed;
     Rigidbody rigidpody;
 
-
     void Start()
     {
         GetComponent<Rigidbody>().velocity = transform.forward * speed;

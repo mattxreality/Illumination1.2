@@ -7,36 +7,22 @@ public class DestroyByContact : MonoBehaviour
     public GameObject explosion;
     public GameObject playerExplosion;
     public int scoreValue;
-    //private GameController gameController;
-
-    void Start()
-    {
-        //GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
-        //if (gameControllerObject != null)
-        //{
-        //    gameController = gameControllerObject.GetComponent<GameController>();
-        //}
-        //if (gameController == null)
-        //{
-        //    Debug.Log("Cannot find 'GameController' script");
-        //}
-    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "light" | other.tag == "gate" | other.tag == "accelerator") { return; }
+        if (other.tag == "FX" | other.tag == "light" | other.tag == "gate" | other.tag == "accelerator") { return; }
 
         if (explosion != null)
         {
             Instantiate(explosion, transform.position, transform.rotation);
         }
-        print("Object triggered something");
-        print("other game object = " + other.gameObject.name);
-        print("other game object tag = " + other.gameObject.tag);
-        Destroy(gameObject);
+        /*
+         * print("Object triggered something");
+         * print("other game object = " + other.gameObject.name);
+         * print("other game object tag = " + other.gameObject.tag);
+        */
 
-
-  
+    Destroy(gameObject);
 
     }
 }

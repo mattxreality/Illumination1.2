@@ -40,7 +40,7 @@ using UnityEngine;
 
     [SerializeField] ParticleSystem FXParticle01;
     [SerializeField] ParticleSystem FXParticle02;
-    [SerializeField] ParticleSystem playerContact;
+    [SerializeField] ParticleSystem playerContactFX;
 
     private float coolDownValue;
     private float currCoolDownValue; // used for countdown and resetting lights & collision
@@ -112,7 +112,7 @@ using UnityEngine;
         }
 
         if (other.tag == "player")
-        { Instantiate(playerContact, transform.position, transform.rotation); }
+        { Instantiate(playerContactFX, transform.position, transform.rotation); }
         
     }
 

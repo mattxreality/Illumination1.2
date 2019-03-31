@@ -138,7 +138,7 @@ MonoBehaviour:
   lightColor02: {r: 0.5411946, g: 0.1745283, b: 1, a: 0}
   FXParticle01: {fileID: 9213686532019000765}
   FXParticle02: {fileID: 9213686533147558997}
-  playerContact: {fileID: 6312852620549707021, guid: 24aea83eb1a9b6a4f871785e726ee5e0,
+  playerContactFX: {fileID: 6312852620549707021, guid: 24aea83eb1a9b6a4f871785e726ee5e0,
     type: 3}
 --- !u!1 &8015866907599814297
 GameObject:
