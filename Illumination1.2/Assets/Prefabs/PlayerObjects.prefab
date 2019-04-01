@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48aa6fd447cf749479462ae634cbcb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isControlEnabled: 1
   xControlSpeed: 12
   yControlSpeed: 12
   xControlRange: 26
@@ -162,7 +163,6 @@ MonoBehaviour:
   controlRollFactor: -20
   controlYawFactor: 10
   rotateSpeed: 10
-  isControlEnabled: 1
 --- !u!114 &4601986391847894022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,8 +192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerContact: {fileID: 6312852620549707021, guid: 24aea83eb1a9b6a4f871785e726ee5e0,
     type: 3}
-  initialSpeed: 10
-  speedMultiplier: 5
+  initialSpeed: 100
+  speedMultiplier: 1.2
   countOfGatesActivated: 0
   coolDownValue: 10
 --- !u!114 &4518905861609904808
@@ -422,6 +422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FX_Bullets
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782869699892467794, guid: 53bd937631699094f8c22cb755eafcf4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2158663884331322424, guid: 53bd937631699094f8c22cb755eafcf4,
         type: 3}
