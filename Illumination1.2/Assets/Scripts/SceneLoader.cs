@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-
+    [Tooltip("In seconds")][SerializeField] float loadDelay = 5f;
     // Use this for initialization
     void Start()
     {
-        Invoke("LoadFirstScene", 5f);
+        Invoke("LoadFirstScene", loadDelay);
     }
 
     void LoadFirstScene()

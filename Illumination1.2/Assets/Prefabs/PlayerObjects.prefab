@@ -192,9 +192,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerContact: {fileID: 6312852620549707021, guid: 24aea83eb1a9b6a4f871785e726ee5e0,
     type: 3}
-  initialSpeed: 100
-  speedMultiplier: 1.2
-  countOfGatesActivated: 0
+  initialSpeed: 10
+  baseSpeedBonus: 0.1
+  speedMultiplier: 1.05
+  speedIncrease: 0
   coolDownValue: 10
 --- !u!114 &4518905861609904808
 MonoBehaviour:
@@ -482,21 +483,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158663884331322424, guid: 53bd937631699094f8c22cb755eafcf4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158663884331322424, guid: 53bd937631699094f8c22cb755eafcf4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158663884331322424, guid: 53bd937631699094f8c22cb755eafcf4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53bd937631699094f8c22cb755eafcf4, type: 3}
