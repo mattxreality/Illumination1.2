@@ -59,9 +59,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 150
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -94,7 +94,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5284,6 +5284,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5723646984698094159, guid: 283ac2b7e1f04fc4ca5dfaa149e6e335,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f995b3145e0e7247a42da6cef1dbf23, type: 2}
     - target: {fileID: 5723646984698190831, guid: 283ac2b7e1f04fc4ca5dfaa149e6e335,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.r
@@ -5409,11 +5414,6 @@ PrefabInstance:
       propertyPath: TrailModule.enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5723646984698094159, guid: 283ac2b7e1f04fc4ca5dfaa149e6e335,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0f995b3145e0e7247a42da6cef1dbf23, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 283ac2b7e1f04fc4ca5dfaa149e6e335, type: 3}
 --- !u!4 &2224047795074086926 stripped

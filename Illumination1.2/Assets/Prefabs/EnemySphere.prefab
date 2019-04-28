@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7183321004586943708}
   - component: {fileID: 7047306589143565710}
   - component: {fileID: 6220909787979521405}
+  - component: {fileID: 4698769751660361152}
+  - component: {fileID: 6328309190163676042}
   m_Layer: 0
   m_Name: EnemySphere
   m_TagString: Untagged
@@ -30,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 3986294141102181344}
   m_LocalRotation: {x: 0, y: -0.27832904, z: 0, w: 0.96048576}
   m_LocalPosition: {x: -1.828, y: 1.91, z: 0.00000006139556}
-  m_LocalScale: {x: 2.5182, y: 2.5182, z: 2.5182}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -4759,3 +4761,33 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4698769751660361152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3986294141102181344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec338d05f13903142b2cb716862966e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleVector: {x: 5, y: 5, z: 5}
+  period: 5
+  randomizeFactor: 2.2
+  scaleFactor: 1
+--- !u!114 &6328309190163676042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3986294141102181344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73303696d633bc042959a0b5f6502fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 3}
+  scoreValue: 10

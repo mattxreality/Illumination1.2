@@ -41,9 +41,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.4
-  m_Range: 74.6
+  m_Color: {r: 0.6839622, g: 1, b: 0.98086405, a: 1}
+  m_Intensity: 0.6
+  m_Range: 100
   m_SpotAngle: 65.854126
   m_CookieSize: 10
   m_Shadows:
@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 4518905861609904808}
   - component: {fileID: 3837532451508405457}
   - component: {fileID: 310836444}
+  - component: {fileID: 1846032101}
   m_Layer: 0
   m_Name: PlayerObjects
   m_TagString: Player
@@ -192,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerContact: {fileID: 6312852620549707021, guid: 24aea83eb1a9b6a4f871785e726ee5e0,
     type: 3}
-  initialSpeed: 10
+  initialSpeed: 20
   baseSpeedBonus: 0.1
   speedMultiplier: 1.05
   speedIncrease: 0
@@ -209,13 +210,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c379ee4d8fa0e70428d79803b73caee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impact: {fileID: 0}
+  impact: {fileID: 8300000, guid: eaec2af12bf94dd45969e7dfb7b731d4, type: 3}
   death: {fileID: 0}
   success: {fileID: 0}
   deathParticle: {fileID: 7440686434856967004, guid: 59b81355da2675f418d99eedb8d7b26a,
     type: 3}
   successParticle: {fileID: 0}
-  localImpactFX: {fileID: 121998385174672930}
+  localImpactFX: {fileID: 3399487149715872838}
   levelLoadDelay: 5
 --- !u!65 &3837532451508405457
 BoxCollider:
@@ -246,6 +247,102 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!82 &1846032101
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601986391553900765}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &4601986393008709015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -406,9 +503,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7418497317238893950}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &121998385174672930 stripped
+--- !u!198 &3399487149715872838 stripped
 ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7440686434856967004, guid: 59b81355da2675f418d99eedb8d7b26a,
+  m_CorrespondingSourceObject: {fileID: 5322880429402337592, guid: 59b81355da2675f418d99eedb8d7b26a,
     type: 3}
   m_PrefabInstance: {fileID: 7418497317238893950}
   m_PrefabAsset: {fileID: 0}
