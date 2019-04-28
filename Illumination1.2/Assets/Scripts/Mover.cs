@@ -6,9 +6,9 @@ public class Mover : MonoBehaviour
 {
     // todo must normalize projectile speed, currently too slow at beginning, to fast later
 
-    public float speed = 75f;
+    public float speed = 100f;
     public float speedIncrease = 1f;
-    [SerializeField] float speedNormalizer = .8f;
+    [SerializeField] float speedNormalizer = .7f;
 
     void Start()
     {
