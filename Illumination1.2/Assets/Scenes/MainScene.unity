@@ -7141,8 +7141,8 @@ Transform:
   - {fileID: 701548519}
   - {fileID: 1214253758}
   - {fileID: 688481422}
-  - {fileID: 1325746747}
   - {fileID: 2102063209}
+  - {fileID: 1325746747}
   - {fileID: 2083487350}
   - {fileID: 2001279253}
   m_Father: {fileID: 0}
@@ -7890,7 +7890,7 @@ PrefabInstance:
     - target: {fileID: 1378956649591506325, guid: 3cbf3d28cf5f6d746a7fd8bf55a3e6db,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -48.15
+      value: -47.8
       objectReference: {fileID: 0}
     - target: {fileID: 1378956649591506344, guid: 3cbf3d28cf5f6d746a7fd8bf55a3e6db,
         type: 3}
