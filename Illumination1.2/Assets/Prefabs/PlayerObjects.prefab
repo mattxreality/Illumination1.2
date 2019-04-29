@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isControlEnabled: 1
-  xControlSpeed: 12
-  yControlSpeed: 12
+  xControlSpeed: 16
+  yControlSpeed: 16
   xControlRange: 26
   yControlRange: 16
   positionPitchFactor: -1.43
