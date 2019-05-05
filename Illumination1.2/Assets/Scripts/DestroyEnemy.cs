@@ -12,10 +12,10 @@ public class DestroyEnemy : MonoBehaviour
     {
         if (other.tag == "projectile")
         { 
-        if (explosion != null)
-        {
-            Instantiate(explosion, transform.position, transform.rotation);
-        }
+            if (explosion != null)
+            {
+                Instantiate(explosion, transform.position, transform.rotation);
+            }
         /*
          * print("Object triggered something");
          * print("other game object = " + other.gameObject.name);
@@ -23,6 +23,10 @@ public class DestroyEnemy : MonoBehaviour
         */
 
         Destroy(gameObject);
+        }
     }
+    private void OnParticleCollision(GameObject other)
+    {
+        print("Particles collided with enemy " + gameObject.name);
     }
 }
