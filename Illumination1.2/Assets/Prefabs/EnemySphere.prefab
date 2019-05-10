@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4020386657478718748}
   - component: {fileID: 1477799927504713871}
   - component: {fileID: 4422565012240780311}
-  - component: {fileID: 7183321004586943708}
   - component: {fileID: 7047306589143565710}
   - component: {fileID: 6220909787979521405}
   - component: {fileID: 4698769751660361152}
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &7183321004586943708
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3986294141102181344}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &7047306589143565710
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4849,3 +4835,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 3}
   scoreValue: 10
+  parent: {fileID: 0}
