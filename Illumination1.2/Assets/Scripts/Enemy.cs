@@ -7,10 +7,14 @@ public class Enemy : MonoBehaviour
     public GameObject explosion;
     //public GameObject playerExplosion;
     [SerializeField] Transform parent;
+    [SerializeField] int scorePerHit = 12;
+
+    ScoreBoard scoreBoard; // Declare class ScoreBoard variable
 
     void Start()
     {
         AddNonTriggerSphereCollider(); // use often when adding components to asset pack gameObjects
+        scoreBoard = FindObjectOfType<ScoreBoard>(); // searches for the instance of ScoreBoard throughout my entire scene. Instantiate.
     }
 
     private void AddNonTriggerSphereCollider()
@@ -21,10 +25,13 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider other) // action for gameObject collision
     {
-        if (other.tag == "projectile")
-        {
-            ProcessDestruction();
-        }
+        if (other.tag == "projectile"){ProcessDestruction();}
+    }
+
+    void OnParticleCollision(GameObject other) // action for particle collision
+    {
+        print("Particles collided with enemy " + gameObject.name);
+        ProcessDestruction();
     }
 
     private void ProcessDestruction()
@@ -33,20 +40,8 @@ public class Enemy : MonoBehaviour
         {
             GameObject fx = Instantiate(explosion, transform.position, transform.rotation); // or for no rotation use 'Quaternion.identity'
             fx.transform.parent = parent; // set parent for all explosions to 'Spawn At Runtime'
-            // this is an 'ok' approach, but I'd rather use the 'Destroy by Time' script on each explosion
         }
-        /*
-         * print("Object triggered something");
-         * print("other game object = " + other.gameObject.name);
-         * print("other game object tag = " + other.gameObject.tag);
-        */
-
+        scoreBoard.ScoreHit(scorePerHit);
         Destroy(gameObject);
-    }
-
-    void OnParticleCollision(GameObject other) // action for particle collision
-    {
-        print("Particles collided with enemy " + gameObject.name);
-        ProcessDestruction();
     }
 }
