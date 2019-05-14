@@ -7,6 +7,7 @@ public class ScoreBoard : MonoBehaviour
 {
     private int score;
     TextMeshProUGUI scoreText;
+    GameObject fxScorePoint; //  todo play particle system each time an point is scored. Refine duration, speed, polish.
 
     void Start()
     {
