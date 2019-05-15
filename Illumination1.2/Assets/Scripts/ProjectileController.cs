@@ -20,5 +20,13 @@ public class ProjectileController : MonoBehaviour
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
             //GetComponent<AudioSource>().Play();
         }
+        //Oculus Touch Triggers
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) >= Mathf.Epsilon ||
+            OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) >= Mathf.Epsilon &&
+            Time.time > nextFire) 
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+        }
     }
 }

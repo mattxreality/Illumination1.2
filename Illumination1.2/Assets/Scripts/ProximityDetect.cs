@@ -97,8 +97,8 @@ using UnityEngine;
                 //lightSource.intensity = 0f;
                 t = 0.0f;
                 r = 0.0f;
-                m_Animator.Stop("LightFlutter"); // != todo Not currently working
-                m_Animator.Stop("GrassLightAnimation"); // != todo Not currently working
+                //m_Animator.Stop("LightFlutter"); // != todo Not currently working
+                //m_Animator.Stop("GrassLightAnimation"); // != todo Not currently working
                 break;
             case LightState.Increasing:
                 // increase light intensity to 'lightIntensity'

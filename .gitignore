@@ -4,9 +4,10 @@
 [Bb]uild/
 [Bb]uilds/
 AssetStoreTools*
-Asset Packs/
-Audio/
-Oculus/
+Illumination1.2/Assets/Asset Packs/Standard Assets/Vehicles/
+Illumination1.2/Assets/Asset Packs/Standard Assets/Characters/
+Illumination1.2/Assets/Asset Packs/Standard Assets/Environment/SpeedTree/
+Illumination1.2/Assets/Asset Packs/PolyToolkit/
 SampleScenes/
 
 # Visual Studio cache directory

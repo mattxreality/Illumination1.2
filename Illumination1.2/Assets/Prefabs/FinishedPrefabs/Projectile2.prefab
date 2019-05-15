@@ -110,7 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1063382abb11e4083e90ca86e63b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 89.6
+  speedIncrease: 1
+  speedNormalizer: 1.2
 --- !u!54 &6214798977674167206
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -174,6 +176,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7431817125727022959}
     m_Modifications:
+    - target: {fileID: 4994889761754917033, guid: 977d937117b3075498b66b64464de95d,
+        type: 3}
+      propertyPath: m_Name
+      value: ProjectileParticleSystem
+      objectReference: {fileID: 0}
     - target: {fileID: 4994889761754917034, guid: 977d937117b3075498b66b64464de95d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -229,11 +236,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4994889761754917033, guid: 977d937117b3075498b66b64464de95d,
-        type: 3}
-      propertyPath: m_Name
-      value: ProjectileParticleSystem
-      objectReference: {fileID: 0}
     - target: {fileID: 4994889761754917035, guid: 977d937117b3075498b66b64464de95d,
         type: 3}
       propertyPath: LightsModule.rangeCurve.minMaxState
@@ -264,6 +266,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7431817125727022959}
     m_Modifications:
+    - target: {fileID: 6414290456980892137, guid: 6dd055ed30607f1419946f5e35463207,
+        type: 3}
+      propertyPath: m_Name
+      value: ProjectileParticleTrail
+      objectReference: {fileID: 0}
     - target: {fileID: 5432233795458116163, guid: 6dd055ed30607f1419946f5e35463207,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -318,11 +325,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6414290456980892137, guid: 6dd055ed30607f1419946f5e35463207,
-        type: 3}
-      propertyPath: m_Name
-      value: ProjectileParticleTrail
       objectReference: {fileID: 0}
     - target: {fileID: 5507075048330226647, guid: 6dd055ed30607f1419946f5e35463207,
         type: 3}

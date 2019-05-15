@@ -81,7 +81,7 @@ public class MAXRPlayerController : MonoBehaviour
         {
             m_isAxisInUse = false;
         }
-        print("m_isAxisInUse = " + m_isAxisInUse);
+        //print("m_isAxisInUse = " + m_isAxisInUse);
     }
 
     private void RestoreRotation()
