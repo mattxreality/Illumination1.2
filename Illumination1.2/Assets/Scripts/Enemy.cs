@@ -41,7 +41,8 @@ public class Enemy : MonoBehaviour
             GameObject fx = Instantiate(explosion, transform.position, transform.rotation); // or for no rotation use 'Quaternion.identity'
             fx.transform.parent = parent; // set parent for all explosions to 'Spawn At Runtime'
         }
-        scoreBoard.ScoreHit(scorePerHit);
+        
         Destroy(gameObject);
+        scoreBoard.ScoreHit(scorePerHit);
     }
 }
