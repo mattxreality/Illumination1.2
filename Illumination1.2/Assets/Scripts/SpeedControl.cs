@@ -27,6 +27,9 @@ public class SpeedControl : MonoBehaviour
     int gatesActivatedMultiplier = 1;
     float currentSpeed;
 
+   
+    GateBoard gateBoard; // UI Class
+
     [SerializeField] float coolDownValue = 10f; // how long after gate contact before speed decreases
     private float currCoolDownValue; // used for countdown and resetting lights & collision
 
@@ -51,6 +54,7 @@ public class SpeedControl : MonoBehaviour
         print("Initial Speed = " + currentSpeed);
         currentSpeed = initialSpeed;
         BetterWaypointFollower.instance.routeSpeed = currentSpeed;
+        gateBoard = FindObjectOfType<GateBoard>(); // searches for the instance of GateBoard throughout my entire scene. Instantiate.
     }
 
 
@@ -72,7 +76,8 @@ public class SpeedControl : MonoBehaviour
             Instantiate(playerContact, transform.position, transform.rotation);
 
             StartCoroutine(StartCountdown(coolDownValue)); // countdown to reset count of gates
-            
+
+            gateBoard.GateHit(gatesActivatedReal); // Updates UI counter
         }
     }
 

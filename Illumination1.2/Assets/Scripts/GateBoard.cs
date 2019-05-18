@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ScoreBoard : MonoBehaviour
+public class GateBoard : MonoBehaviour
 {
-    private int score;
-    TextMeshProUGUI scoreText;
+    private int count;
+    TextMeshProUGUI gateText;
     [SerializeField] ParticleSystem fxScoreRays; //score FX
     [SerializeField] ParticleSystem fxScoreCircle; //score FX
 
@@ -14,18 +14,17 @@ public class ScoreBoard : MonoBehaviour
      * in the parent heirarchy.
      * Play particle system each time an point is scored. Refine duration, speed, polish. 
      */
-     
+    // Start is called before the first frame update
     void Start()
     {
-        scoreText = GetComponent<TextMeshProUGUI>();
-        scoreText.text = score.ToString();
-       
+        gateText = GetComponent<TextMeshProUGUI>();
+        gateText.text = count.ToString();
     }
 
-    public void ScoreHit(int scorePerHit) // accessible outside of this class
+    public void GateHit(int accumulatedGateCount) // accessible outside of this class
     {
-        score = score + scorePerHit;
-        scoreText.text = score.ToString();
+        count = count + accumulatedGateCount;
+        gateText.text = count.ToString();
         fxScoreRays.Play();
         fxScoreCircle.Play();
     }

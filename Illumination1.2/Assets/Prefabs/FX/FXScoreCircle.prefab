@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 100085610560298104}
   - component: {fileID: 1203769446704268273}
   - component: {fileID: 802207356693429911}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FXScoreCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,9 +46,9 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -746,7 +746,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1.51
+      value: 2.11
       mode: 1
       spread: 0
       speed:
@@ -2630,7 +2630,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4.51
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4015,7 +4015,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2.51
+      scalar: 2.62
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4730,8 +4730,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1718834061
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
