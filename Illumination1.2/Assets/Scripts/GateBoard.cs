@@ -7,6 +7,7 @@ public class GateBoard : MonoBehaviour
 {
     private int count;
     TextMeshProUGUI gateText;
+    TextMeshProUGUI speedText; // declare object
     [SerializeField] ParticleSystem fxScoreRays; //score FX
     [SerializeField] ParticleSystem fxScoreCircle; //score FX
 
@@ -17,15 +18,25 @@ public class GateBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gateText = GetComponent<TextMeshProUGUI>();
-        gateText.text = count.ToString();
+        GameObject go = GameObject.Find("TextSpeed"); // instantiate object
+        speedText = go.GetComponent<TextMeshProUGUI>(); // define variable of object component
+        GameObject go2 = GameObject.Find("TextGates");
+        gateText = go2.GetComponent<TextMeshProUGUI>();
+
     }
 
     public void GateHit(int accumulatedGateCount) // accessible outside of this class
     {
-        count = count + accumulatedGateCount;
+        count = accumulatedGateCount;
         gateText.text = count.ToString();
-        fxScoreRays.Play();
-        fxScoreCircle.Play();
+        if (count != 0) // FX when gate passed
+        {
+            fxScoreRays.Play();
+            fxScoreCircle.Play();
+        }
+    }
+    public void SpeedUpdate(float speed)
+    {
+        speedText.text = speed.ToString();
     }
 }

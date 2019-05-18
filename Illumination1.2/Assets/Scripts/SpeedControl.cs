@@ -52,11 +52,23 @@ public class SpeedControl : MonoBehaviour
     {
         gatesActivatedReal = 0;
         print("Initial Speed = " + currentSpeed);
+        print("starting corrCoolDownValue " + currCoolDownValue);
         currentSpeed = initialSpeed;
+        print("currentSpeed = " + currentSpeed);
         BetterWaypointFollower.instance.routeSpeed = currentSpeed;
         gateBoard = FindObjectOfType<GateBoard>(); // searches for the instance of GateBoard throughout my entire scene. Instantiate.
+        SpeedUIUpdate();
     }
 
+    private void Update()
+    {
+        if (currCoolDownValue <= Mathf.Epsilon ) // check if countdown timer is finished
+        {
+            gatesActivatedReal = 0; // reset activated gate count
+            // print("SpeedControl Mathf.Epsilon used");
+            gateBoard.GateHit(gatesActivatedReal); // Updates UI counter
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -64,11 +76,11 @@ public class SpeedControl : MonoBehaviour
         {
             // todo gate is counted twice, or there are two collider interactions
 
+            print("collided with accelerator gate");
             gatesActivatedReal++; // increment count of gates activated by 1
             gatesActivatedMultiplier++; // increments speed bonus factor by 1
             speedIncrease = gatesActivatedMultiplier * baseSpeedBonus;
-            print("collided with accelerator gate");
-            print("Count of gates activated = " + gatesActivatedReal);
+            
             print("Current gateMultiplier = " + gatesActivatedMultiplier);
             SetSpeed();
 
@@ -78,36 +90,46 @@ public class SpeedControl : MonoBehaviour
             StartCoroutine(StartCountdown(coolDownValue)); // countdown to reset count of gates
 
             gateBoard.GateHit(gatesActivatedReal); // Updates UI counter
+            print("Count of gates activated = " + gatesActivatedReal);
         }
+    }
+
+    private void SpeedUIUpdate()
+    {
+        gateBoard.SpeedUpdate(currentSpeed);
     }
 
     private void SetSpeed()
     {
-        if (currCoolDownValue < 1) // check if countdown timer is finished
-        {
-            gatesActivatedReal = 1; // reset activated gate count
-        }
-        if (gatesActivatedReal < 1)
+        if (gatesActivatedReal == 0)
+        {   
             // todo add lerp to gragually change speed
             currentSpeed = initialSpeed;
+            SpeedUIUpdate();
+        }
         else
+        {
             currentSpeed = currentSpeed + (initialSpeed * speedIncrease);
-        print("CurrentSpeed = " + currentSpeed);
-        // changes speed of BetterWaypointFollower
-        // todo, speed reduction currently not working. 
-        BetterWaypointFollower.instance.routeSpeed = currentSpeed;
+            print("CurrentSpeed = " + currentSpeed);
+            SpeedUIUpdate();
+            // changes speed of BetterWaypointFollower
+            // todo, speed reduction currently not working. 
+            BetterWaypointFollower.instance.routeSpeed = currentSpeed;
+        }
     }
 
 
     private IEnumerator StartCountdown(float coolDownValue)
     {
-        // counts down based on 'Light Duration" value
+        // count down
         currCoolDownValue = coolDownValue;
+        print("coroutine initial set currCoolDownValue " + currCoolDownValue);
         while (currCoolDownValue > 0)
         {
             // Debug.Log("Countdown: " + currCoolDownValue);
             yield return new WaitForSeconds(1.0f);
             currCoolDownValue--;
+            print("Cooldown timer value " + currCoolDownValue);
         }
     }
 }
