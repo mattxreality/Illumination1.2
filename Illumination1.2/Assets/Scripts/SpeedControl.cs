@@ -72,6 +72,12 @@ public class SpeedControl : MonoBehaviour
             SetSpeed();
             gateBoard.GateHit(gatesActivatedReal); // Updates UI counter
         }
+        speedBoard.CoolDownSliderUpdate(CalculateCoolDown());
+    }
+
+    public float CalculateCoolDown()
+    {
+        return currCoolDownValue / coolDownValue;
     }
 
     void OnTriggerEnter(Collider other)
