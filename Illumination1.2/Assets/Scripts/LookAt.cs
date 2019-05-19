@@ -9,6 +9,6 @@ public class LookAt : MonoBehaviour
     void Start()
     {
         // Rotate the camera every frame so it keeps looking at the target
-        transform.LookAt(transform.position*2 - target.position);
+        transform.LookAt(transform.position * 2 - target.position);
     }
 }

@@ -100,6 +100,29 @@ using UnityEngine;
 
     private void OnTriggerEnter(Collider other)
     {
+        CollisionProcessing(other);
+
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (!collisionsEnabled) { return; } // if collisions are disabled, stop processing
+
+        //if (other.Pother.tag == "projectile")
+        //{
+            FXParticle01.Play(); // activate particles
+            FXParticle02.Play(); // activate particles
+            accelTrigger.SetActive(true); // enable accelTrigger
+            ToggleComponentEnable();
+            StartCoroutine(StartCountdown(coolDownValue)); // countdown to reset lights & collision
+        // }
+
+        //if (other.tag == "player")
+        //{ Instantiate(playerContactFX, transform.position, transform.rotation); }
+    }
+
+    private void CollisionProcessing(Collider other)
+    {
         if (!collisionsEnabled) { return; } // if collisions are disabled, stop processing
 
         if (other.tag == "projectile")
@@ -113,7 +136,6 @@ using UnityEngine;
 
         if (other.tag == "player")
         { Instantiate(playerContactFX, transform.position, transform.rotation); }
-        
     }
 
     private void SetLightColor()

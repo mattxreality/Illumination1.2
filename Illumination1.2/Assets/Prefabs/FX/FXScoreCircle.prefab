@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 100085610560298104}
   - component: {fileID: 1203769446704268273}
   - component: {fileID: 802207356693429911}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: FXScoreCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

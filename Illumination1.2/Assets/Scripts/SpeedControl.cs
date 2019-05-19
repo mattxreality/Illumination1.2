@@ -29,6 +29,7 @@ public class SpeedControl : MonoBehaviour
 
    
     GateBoard gateBoard; // UI Class
+    SpeedBoard speedBoard; //UI Class
 
     [SerializeField] float coolDownValue = 10f; // how long after gate contact before speed decreases
     private float currCoolDownValue; // used for countdown and resetting lights & collision
@@ -57,7 +58,8 @@ public class SpeedControl : MonoBehaviour
         print("currentSpeed = " + currentSpeed);
         BetterWaypointFollower.instance.routeSpeed = currentSpeed;
         gateBoard = FindObjectOfType<GateBoard>(); // searches for the instance of GateBoard throughout my entire scene. Instantiate.
-        SpeedUIUpdate();
+        speedBoard = FindObjectOfType<SpeedBoard>();
+        SetSpeed();
     }
 
     private void Update()
@@ -65,7 +67,9 @@ public class SpeedControl : MonoBehaviour
         if (currCoolDownValue <= Mathf.Epsilon ) // check if countdown timer is finished
         {
             gatesActivatedReal = 0; // reset activated gate count
+            gatesActivatedMultiplier = 1; // reset multiplier
             // print("SpeedControl Mathf.Epsilon used");
+            SetSpeed();
             gateBoard.GateHit(gatesActivatedReal); // Updates UI counter
         }
     }
@@ -96,7 +100,7 @@ public class SpeedControl : MonoBehaviour
 
     private void SpeedUIUpdate()
     {
-        gateBoard.SpeedUpdate(currentSpeed);
+        speedBoard.SpeedUpdate(currentSpeed);
     }
 
     private void SetSpeed()
