@@ -4845,8 +4845,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959ddef4d8e08fb468e8f6cf8f36a4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 2097864143923867925, guid: 310b71c7b71bc9742b8986950c901b00, type: 3}
-  shotSpawn: {fileID: 4601986391278987090}
+  shotGO: {fileID: 2097864143923867925, guid: 310b71c7b71bc9742b8986950c901b00, type: 3}
+  shotGOSpawn: {fileID: 4601986391278987090}
+  shotPS: {fileID: 4601986391278987089}
   fireRate: 0.2
 --- !u!114 &310836445
 MonoBehaviour:

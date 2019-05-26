@@ -1,0 +1,19 @@
+This project uses the following items from Poly (http://poly.google.com):
+
+Title: Bird
+Author: Poly by Google
+URL: https://poly.google.com/view/cTSOEPvVovs
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Rock Outcropping 01
+Author: Matt Hoffman
+URL: https://poly.google.com/view/bfU86SsIfq6
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Rock Terrain Asset 01a
+Author: Matt Hoffman
+URL: https://poly.google.com/view/9wcc2thAe3e
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode

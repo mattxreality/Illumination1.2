@@ -30,15 +30,13 @@ public class MAXRPlayerController : MonoBehaviour
 
     private float xThrow, yThrow; // two variables declared on the same line
     private int currentScene;
-
+    private bool m_isAxisInUse = false;
 
     public void ControlsEnabled(bool b) // called by string reference
     {
         isControlEnabled = b;
         print("controlsEnabled set to: " + isControlEnabled);
     }
-
-    private bool m_isAxisInUse = false;
 
     private void Start()
     {
@@ -69,7 +67,7 @@ public class MAXRPlayerController : MonoBehaviour
     private void CheckAxisInUse()
     {
         // checks if position controls are in use
-            if (CrossPlatformInputManager.GetAxisRaw("Horizontal") != 0)
+        if (CrossPlatformInputManager.GetAxisRaw("Horizontal") != 0)
         {
             if (m_isAxisInUse == false)
             {
@@ -82,28 +80,6 @@ public class MAXRPlayerController : MonoBehaviour
             m_isAxisInUse = false;
         }
         //print("m_isAxisInUse = " + m_isAxisInUse);
-    }
-
-    private void RestoreRotation()
-    {
-        // todo make return rotation smooth and slow. !!! Possibly I should use throw 'sensitivity' and 'gravity'
-        // for gradual return...? Current return is too fast.
-
-        // Note: The axis Sensitivity and Gravity register numbers all the time.
-        if (!m_isAxisInUse && !restoreRotation)
-        {
-            restoreRotation = true;
-        }
-
-        if (restoreRotation)
-        {
-            // this does strange things to the current playerObject, probably due to waypoint follower
-            transform.rotation = Quaternion.Lerp(transform.rotation, originalRotation, Time.time * rotateSpeed);
-            if (transform.rotation == originalRotation)
-            {
-                restoreRotation = false;
-            }
-        }
     }
 
     void LoadNextLevel()
@@ -141,6 +117,28 @@ public class MAXRPlayerController : MonoBehaviour
         float clampedYPos = Mathf.Clamp(rawYPos, -yControlRange, yControlRange);
         // Moves the player object using input above
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
+    }
+
+    private void RestoreRotation()
+    {
+        // todo make return rotation smooth and slow. !!! Possibly I should use throw 'sensitivity' and 'gravity'
+        // for gradual return...? Current return is too fast.
+
+        // Note: The axis Sensitivity and Gravity register numbers all the time.
+        if (!m_isAxisInUse && !restoreRotation)
+        {
+            restoreRotation = true;
+        }
+
+        if (restoreRotation)
+        {
+            // this does strange things to the current playerObject, probably due to waypoint follower
+            transform.rotation = Quaternion.Lerp(transform.rotation, originalRotation, Time.time * rotateSpeed);
+            if (transform.rotation == originalRotation)
+            {
+                restoreRotation = false;
+            }
+        }
     }
 
     void DebugGame()
