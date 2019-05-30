@@ -4867,7 +4867,7 @@ MonoBehaviour:
   baseSpeedBonus: 0.1
   speedMultiplier: 1.05
   speedIncrease: 0
-  coolDownValue: 10
+  coolDownValue: 20
 --- !u!114 &4518905861609904808
 MonoBehaviour:
   m_ObjectHideFlags: 0

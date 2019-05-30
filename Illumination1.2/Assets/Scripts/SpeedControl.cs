@@ -31,7 +31,7 @@ public class SpeedControl : MonoBehaviour
     GateBoard gateBoard; // UI Class
     SpeedBoard speedBoard; //UI Class
 
-    [SerializeField] float coolDownValue = 10f; // how long after gate contact before speed decreases
+    [SerializeField] float coolDownValue = 30f; // how long after gate contact before speed decreases
     private float currCoolDownValue; // used for countdown and resetting lights & collision
 
     public static SpeedControl instance;

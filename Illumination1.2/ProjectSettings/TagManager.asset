@@ -9,6 +9,7 @@ TagManager:
   - gate
   - accelerator
   - FX
+  - water
   layers:
   - Default
   - TransparentFX

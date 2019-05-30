@@ -16,16 +16,13 @@ public class ProjectileController : MonoBehaviour
     void Update()
     {
         // todo move input to player controller. Call projectile method from MAXRPlayerController.
-        //if (Input.GetButton("Fire1") && Time.time > nextFire)
-        //{
-        //    nextFire = Time.time + fireRate;
-        //    Instantiate(shotGO, shotGOSpawn.position, shotGOSpawn.rotation);
-        //}
 
-        //Oculus Touch Triggers
-        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) >= Mathf.Epsilon ||
+        //Oculus Touch Triggers and general Fire1
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) >= Mathf.Epsilon &&
+            Time.time > nextFire ||
             OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) >= Mathf.Epsilon &&
-            Time.time > nextFire)
+            Time.time > nextFire ||
+            Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
             Instantiate(shotGO, shotGOSpawn.position, shotGOSpawn.rotation);

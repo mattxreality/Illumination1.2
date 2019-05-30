@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 100004, guid: a6d58f54ce5934781962a4f887e834f3, type: 3}
-  playerExplosion: {fileID: 0}
+  ripples: {fileID: 3847570386613015305, guid: bbcdabfe1b7d0124798769efc5e41450, type: 3}
   scoreValue: 0
 --- !u!114 &8822749551255721698
 MonoBehaviour:

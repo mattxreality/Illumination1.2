@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyByContact : MonoBehaviour
 {
     public GameObject explosion;
-    public GameObject playerExplosion;
+    public ParticleSystem ripples;
     public int scoreValue;
 
     void OnTriggerEnter(Collider other)
@@ -22,6 +22,10 @@ public class DestroyByContact : MonoBehaviour
          * print("other game object tag = " + other.gameObject.tag);
         */
 
+        if(ripples != null && other.tag == "water")
+        {
+            Instantiate(ripples, transform.position +Vector3.up, Quaternion.Euler(-90,0,0));
+        }
     Destroy(gameObject);
 
     }
