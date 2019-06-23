@@ -607,7 +607,7 @@ MonoBehaviour:
   explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 3}
   parent: {fileID: 0}
   scorePerHit: 12
-  hits: 5
+  hits: 2
   healthBar: {fileID: 6878959060927581758}
 --- !u!1001 &821061331500606231
 PrefabInstance:

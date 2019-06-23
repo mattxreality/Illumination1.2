@@ -112,7 +112,7 @@ MonoBehaviour:
   explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 3}
   parent: {fileID: 0}
   scorePerHit: 12
-  hits: 5
+  hits: 2
   healthBar: {fileID: 2836756511887726888}
 --- !u!1 &1524214810870536193
 GameObject:

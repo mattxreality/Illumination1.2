@@ -128,6 +128,11 @@ public class SpeedControl : MonoBehaviour
         }
     }
 
+    //void CountDown()
+    //{
+    //    StartCoroutine(CountDownTimer(coolDownValue));
+    //}
+
 
     private IEnumerator StartCountdown(float coolDownValue)
     {
